@@ -64,7 +64,7 @@ const CHAVE_ATIVACAO = 'ativado';
  * Proteção de verdade exige um servidor validando o token e devolvendo uma
  * credencial assinada — nada disso pode morar no aparelho.
  */
-const TOKEN_ATIVACAO = 'MOTORISTA7';
+const TOKEN_ATIVACAO = 'UBER-H6WK-B2S3';
 
 /**
  * Qual veículo está ativo e como os dois estão configurados.
