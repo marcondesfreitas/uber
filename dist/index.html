@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover" />
+    <title>Uber Drive</title>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+  <link rel="preload" href="/_expo\static\css\leaflet-a11497f809dd761cf9840985b442ed44.css" as="style"><link rel="stylesheet" href="/_expo\static\css\leaflet-a11497f809dd761cf9840985b442ed44.css"><link rel="shortcut icon" href="/favicon.ico" />    <!-- metadados-injetados -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="theme-color" content="#0B0B0F" />
+    <meta name="description" content="Protótipo didático de app de motorista, feito em React Native + Expo. Demanda, preço dinâmico e corridas são simulados no aparelho." />
+
+    <!-- "Adicionar à Tela de Início" no iOS: sem estas três, o iPhone abre o
+         site numa aba do Safari em vez de em tela cheia, e usa uma captura da
+         página como ícone. -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- POR QUE "black" E NÃO "black-translucent".
+         Com black-translucent o iOS desenha a barra de status POR CIMA do app
+         e transfere para a página a responsabilidade de pintar aquela faixa.
+         São várias coisas que precisam dar certo em cadeia — viewport-fit,
+         fundo do documento, área segura — e qualquer uma que falhe deixa a
+         tarja branca no topo.
+
+         Com "black" quem pinta a faixa é o próprio iOS, sempre. O app começa
+         logo abaixo dela e não existe pixel sem dono. Combina com o fundo do
+         app (#0B0B0F, quase preto), e troca um risco por uma certeza.
+
+         Efeito colateral esperado: env(safe-area-inset-top) passa a valer 0,
+         porque não há mais nada do sistema sobre o conteúdo. A sonda em
+         Tela.js lê isso e o respiro do topo vira só os 8 px de folga. -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Uber Drive" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Uber Drive" />
+    <meta property="og:title" content="Uber Drive" />
+    <meta property="og:description" content="Protótipo didático de app de motorista, feito em React Native + Expo. Demanda, preço dinâmico e corridas são simulados no aparelho." />
+    <meta property="og:image" content="https://uber-drive.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://uber-drive.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- SPEED INSIGHTS DA VERCEL
+         Mede as Core Web Vitals (carregamento, resposta ao toque, estabilidade
+         do layout) com visitantes reais e manda para o painel da Vercel.
+
+         POR QUE UM SCRIPT E NÃO O PACOTE @vercel/speed-insights
+         ------------------------------------------------------
+         A documentação da Vercel mostra o import de um COMPONENTE, mas em duas
+         variantes por framework — /next, /react, /vue… Este app é Expo/React
+         Native Web: o /next não existe aqui, e o /react traria uma dependência
+         nova que precisaria de um arquivo .web.js para não entrar na build
+         nativa, onde não há navegador.
+
+         O componente daquele pacote faz exatamente uma coisa: injetar este
+         script. Injetando direto, o resultado é o mesmo com zero dependência e
+         sem risco para o build do celular.
+
+         ⚠️ Só coleta se Speed Insights estiver LIGADO no projeto da Vercel
+         (aba Speed Insights do painel). Sem isso o endereço abaixo responde
+         404 e nenhum dado aparece — sem erro visível na tela. -->
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
+    <style>
+      /* O reset do Expo dá altura 100% ao documento, mas não pinta o fundo.
+         Com a viewport cobrindo a tela inteira, qualquer pixel que o app não
+         desenhe mostra o branco padrão do navegador — e num app escuro isso
+         salta aos olhos. Pintar aqui é a rede de segurança: mesmo durante o
+         carregamento, antes de o React montar, a tela já nasce escura. */
+      html, body { background-color: #0B0B0F; }
+
+      /* A RAIZ NÃO LEVA A ÁREA SEGURA — de propósito.
+         A primeira tentativa pôs padding de env(safe-area-inset-*) aqui, e o
+         efeito foi empurrar o app inteiro para dentro: o mapa deixou de chegar
+         às bordas e sobrou uma faixa vazia embaixo.
+
+         Num app de tela cheia é o contrário do que se quer. O FUNDO tem de
+         cobrir tudo, de canto a canto; quem se afasta das bordas é só o
+         CONTEÚDO — o título no topo, os ícones da barra de baixo. Por isso a
+         área segura é medida em JS (TOPO_SEGURO e BASE_SEGURA, em
+         src/components/ui/Tela.js) e aplicada como padding de cada um. */
+    </style>
+  </head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+  <script src="/_expo/static/js/web/AppEntry-67f837ce4d76c402f146016200dcb476.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+# O Vercel instala as dependências e roda o build; nada disso precisa subir.
+node_modules
+dist
+.expo
+design
+*.md
+scripts/gerar-icones.js

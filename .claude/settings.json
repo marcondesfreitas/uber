@@ -1,0 +1,9 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://localhost:20128",
+    "ANTHROPIC_AUTH_TOKEN": "sk-96e5dd8e6d289fed-0bc5f6-30323f57",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "agy/claude-opus-4-6-thinking",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "agy/claude-sonnet-4-6",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "agy/gemini-2.5-flash-lite"
+  }
+}

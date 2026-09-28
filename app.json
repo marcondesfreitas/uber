@@ -1,0 +1,56 @@
+{
+  "expo": {
+    "name": "MotoristaApp",
+    "slug": "motorista-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "icon": "./assets/icone.png",
+    "splash": {
+      "image": "./assets/marca.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B0B0F"
+    },
+    "web": {
+      "favicon": "./public/favicon.png"
+    },
+    "android": {
+      "package": "com.lucas.motoristaapp",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icone-adaptativo.png",
+        "backgroundColor": "#0B0B0F"
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA",
+        "RECORD_AUDIO",
+        "READ_MEDIA_IMAGES"
+      ]
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.lucas.motoristaapp",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Usamos sua localização para mostrar sua posição no mapa e encontrar corridas próximas.",
+        "NSCameraUsageDescription": "A câmera é usada para a verificação facial do motorista."
+      }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Usamos sua localização para mostrar sua posição no mapa e encontrar corridas próximas."
+        }
+      ],
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Usamos suas fotos para você escolher a imagem do seu perfil de motorista."
+        }
+      ]
+    ]
+  }
+}
